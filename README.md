@@ -1,3 +1,9 @@
+# Step 6
+## Customise the Appearance of an App during a Drag using react-beautiful-dnd snapshot Values
+
+<Draggable /> and <Droppable /> components provide snapshot objects to their child functions. These snapshot objects can be used to create beautiful visual queues for users while a drag is occurring.
+______
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
