@@ -1,9 +1,9 @@
-# Step 8
-## Designate Control of Dragging for a react-beautiful-dnd Draggable with dragHandleProps
+# Step 9
+## Move Items between Columns with react-beautiful-dnd using onDragEnd
 
-n react-beautiful-dnd there is a separation between what is being dragged (a Draggable), and how a user drags it (a drag handle). This lesson will explain this distinction and show you how you can control what the drag handle is for a Draggable.
+In this lesson we will place multiple task lists next to each other and enable movement of the tasks between the lists.
 
-A <Draggable /> child function receives a provided object. This object has a property called dragHandleProps. This property gives us the ability to designate what part of the <Draggable /> the user interacts with for drag and drop. You’ll see how to pass this prop to a separate React component to designate control.
+Now that our application has multiple columns, the onDragEnd callback will need to be refactored to handle more than one column. We will add some new logic to move tasks from one column to another in our state.
 ______
 
 # Getting Started with Create React App
