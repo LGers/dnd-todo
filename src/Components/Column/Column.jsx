@@ -7,7 +7,7 @@ export const Column = (props) => {
   const { title, description, tasks } = props;
 
   return (
-    <Card sx={{ width: '250px', bgcolor: '#d5d5ff' }}>
+    <Card sx={{ width: '250px', bgcolor: '#d5d5ff', height: '100%' }}>
       <Container>
         <Typography variant={'h4'} component={'div'}>Column</Typography>
         <Typography variant={'h5'} component={'div'}>{title}</Typography>
@@ -22,7 +22,7 @@ export const Column = (props) => {
                 ref={provided.innerRef}
                 {...provided.droppableProps}
                 sx={{
-                  transition: 'transform 0.05s',
+                  transition: 'transform 0.05s ease',
                   transform: snapshot.isDragging ? 'rotate(5deg)' : undefined,
                   bgcolor: snapshot.isDraggingOver ? '#bdbdd5' : '#d5d5ff',
                   }}

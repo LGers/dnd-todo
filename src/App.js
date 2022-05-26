@@ -23,25 +23,56 @@ export const App = () => {
       return;
     }
 
-    const column = state.columns[source.droppableId];
-    const newTasksIds = Array.from(column.taskIds);
-    // console.log(column.taskIds);
-    // console.log(column.newTaskIds);
-    newTasksIds.splice(source.index, 1);
-    newTasksIds.splice(destination.index, 0, draggableId); // insert draggableId
-
-    const newColumn = {
-      ...column,
-      taskIds: newTasksIds
+    // const column = state.columns[source.droppableId];
+    const startColumn = state.columns[source.droppableId];
+    const finishColumn = state.columns[destination.droppableId];
+    
+    if (startColumn === finishColumn) {
+      const newTasksIds = Array.from(startColumn.taskIds);
+      newTasksIds.splice(source.index, 1);
+      newTasksIds.splice(destination.index, 0, draggableId); // insert draggableId
+  
+      const newColumn = {
+        ...startColumn,
+        taskIds: newTasksIds
+      }
+  
+      const newState = {
+        ...state,
+        columns: {
+          ...state.columns,
+          [newColumn.id]: newColumn,
+        },
+      }
+      setState(newState);
+      return;
     }
+
+    // Moving from one list to another
+    const startTaskIds = Array.from(startColumn.taskIds);
+    startTaskIds.splice(source.index, 1);
+
+    const newStartColumn = {
+      ...startColumn,
+      taskIds: startTaskIds,
+    };
+
+    const finishTaskIds = Array.from(finishColumn.taskIds);
+    finishTaskIds.splice(destination.index, 0, draggableId);
+
+    const newFinishColumn = {
+      ...finishColumn,
+      taskIds: finishTaskIds,
+    };
 
     const newState = {
       ...state,
       columns: {
         ...state.columns,
-        [newColumn.id]: newColumn,
+        [newStartColumn.id]: newStartColumn,
+        [newFinishColumn.id]: newFinishColumn
       },
-    }
+    };
     setState(newState);
   };
 

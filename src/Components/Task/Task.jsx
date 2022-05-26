@@ -22,7 +22,7 @@ export const Task = (props) => {
           >
             <Typography variant={'h6'} component={'div'}>{props.title}</Typography>
             <Typography component={'div'}>{props.description}</Typography>
-            <input />
+            {/* <input /> */}
           </Paper>
         </Stack>
       )}
