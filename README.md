@@ -1,7 +1,9 @@
-# Step 6
-## Customise the Appearance of an App during a Drag using react-beautiful-dnd snapshot Values
+# Step 8
+## Designate Control of Dragging for a react-beautiful-dnd Draggable with dragHandleProps
 
-<Draggable /> and <Droppable /> components provide snapshot objects to their child functions. These snapshot objects can be used to create beautiful visual queues for users while a drag is occurring.
+n react-beautiful-dnd there is a separation between what is being dragged (a Draggable), and how a user drags it (a drag handle). This lesson will explain this distinction and show you how you can control what the drag handle is for a Draggable.
+
+A <Draggable /> child function receives a provided object. This object has a property called dragHandleProps. This property gives us the ability to designate what part of the <Draggable /> the user interacts with for drag and drop. You’ll see how to pass this prop to a separate React component to designate control.
 ______
 
 # Getting Started with Create React App

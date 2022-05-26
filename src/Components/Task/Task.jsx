@@ -13,7 +13,6 @@ export const Task = (props) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          // isDragging={snapshot.isDragging}
         >
           <Paper sx={{
             width: '100%',

@@ -7,19 +7,6 @@ import { initialState } from "./initial-data";
 export const App = () => {
   const [state, setState] = useState(initialState);
 
-  const onDragStart = () => {
-    document.body.style.color = 'orange';
-  };
-
-  const onDragUpdate = (update) => {
-    const { destination } = update;
-    const opacity = destination
-      ? destination.index / Object.keys(state.tasks).length
-      : 0;
-    // document.body.style.backgroundColor = `rgba(153, 141, 217, .1`;
-    document.body.style.backgroundColor = `black`;
-  };
-
   const onDragEnd = (result) => {
     document.body.style.color = 'inherit';
     // console.log('result', result);
@@ -63,8 +50,8 @@ export const App = () => {
       <h1>dnd-todo</h1>
       <h2>Columns</h2>
       <DragDropContext
-        onDragStart={onDragStart}
-        onDragUpdate={onDragUpdate}
+        // onDragStart={onDragStart}
+        // onDragUpdate={onDragUpdate}
         onDragEnd={onDragEnd}
       >
         <Stack direction={'row'} spacing={2}>
