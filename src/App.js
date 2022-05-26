@@ -9,8 +9,7 @@ export const App = () => {
 
   const onDragEnd = (result) => {
     document.body.style.color = 'inherit';
-    // console.log('result', result);
-    const { destination, source, draggableId } = result
+    const { destination, source, draggableId } = result;
 
     if (!destination) {
       return;
@@ -88,13 +87,9 @@ export const App = () => {
         <Stack direction={'row'} spacing={2}>
           {state.columnOrder.map((columnId) => {
             const column = state.columns[columnId];
-            // console.log(column);
             const tasks = column.taskIds.map((taskId) => {
-              // console.log(state.tasks[taskId]);
-              // console.log('taskId', taskId);
               return state.tasks[taskId]
             });
-            // console.log('tasks', tasks);
             return (
               <Column
                 key={column.id}
