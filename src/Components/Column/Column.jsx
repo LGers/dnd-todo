@@ -13,14 +13,19 @@ export const Column = (props) => {
         <Typography variant={'h5'} component={'div'}>{title}</Typography>
         <Typography variant={'h6'} component={'div'}>{description}</Typography>
         <Droppable droppableId={props.column.id}>
-          {(provided) => (
+          {(provided, snapshot) => (
             // TODO what is inner ref
             // FIXME what is inner ref
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            // <div ref={provided.innerRef} {...provided.droppableProps}>
               <Stack
                 spacing={2}
-                // innerRef={provided.innerRef}
-                // {...provided.droppableProps}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                sx={{
+                  transition: 'transform 0.05s',
+                  transform: snapshot.isDragging ? 'rotate(5deg)' : undefined,
+                  bgcolor: snapshot.isDraggingOver ? '#bdbdd5' : '#d5d5ff',
+                  }}
               >
                 {tasks.map((task, index) => {
                     return <Task
@@ -34,7 +39,7 @@ export const Column = (props) => {
                 )}
                 {provided.placeholder}
               </Stack>
-            </div>
+            // </div>
           )}
         </Droppable>
       </Container>
