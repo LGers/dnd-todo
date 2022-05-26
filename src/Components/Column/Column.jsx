@@ -1,12 +1,10 @@
 import { useRef } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import { Card, Paper, Typography, Stack, Container } from '@mui/material';
+import { Card, Typography, Stack, Container } from '@mui/material';
 import { Task } from '../Task/Task';
 
 export const Column = (props) => {
   const { title, description, tasks } = props;
-  console.log(tasks);
-  const ref = useRef();
 
   return (
     <Card sx={{ width: '250px', bgcolor: '#d5d5ff' }}>
@@ -38,12 +36,6 @@ export const Column = (props) => {
               </Stack>
             </div>
           )}
-          {/* <Stack spacing={2}>
-            {tasks.map((task) => {
-                return <Task key={task.id} title={task.title} description={task.description} />
-              }
-            )}
-          </Stack> */}
         </Droppable>
       </Container>
     </Card>
