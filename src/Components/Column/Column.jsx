@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { Card, Typography, Stack, Container } from '@mui/material';
 import { Task } from '../Task/Task';
@@ -7,37 +6,8 @@ export const Column = (props) => {
   const { title, description, tasks } = props;
 
   return (
-    // <Card
-    //       sx={{
-    //         // width: '100%',
-    //         height: '100%',
-    //         bgcolor: '#801124',
-    //         // overflow: 'hidden',
-    //         // overflow: 'auto',
-    //         display: 'flex',
-    //         flexDirection: 'column',
-    //       }}
-    //       // {...provided.draggableProps}
-    //       // {...provided.dragHandleProps}
-    //       // ref={provided.innerRef}
-    // >
-    //   <p>col container</p>
       <Draggable draggableId={props.column.id} index={props.index}>
         {(provided) => (
-          // <Container
-          //   sx={{
-          //     // width: '100%',
-          //     // height: '100%',
-          //     bgcolor: '#15f5ff',
-          //     // overflow: 'hidden',
-          //     // overflow: 'auto',
-          //     display: 'flex',
-          //   flexDirection: 'column',
-          //   }}
-          //   {...provided.draggableProps}
-          //   {...provided.dragHandleProps}
-          //   ref={provided.innerRef}
-          // >
             <Card
               sx={{
                 width: '250px',
@@ -64,7 +34,6 @@ export const Column = (props) => {
                   {(provided, snapshot) => (
                     // TODO what is inner ref
                     // FIXME what is inner ref
-                    // <div ref={provided.innerRef} {...provided.droppableProps}>
                       <Card
                         sx={{
                           // overflowY: 'auto',
@@ -102,14 +71,10 @@ export const Column = (props) => {
                           {provided.placeholder}
                         </Stack>
                       </Card>
-                    // </div>
                   )}
                 </Droppable>
               </Container>
             </Card>
-          // </Container>
         )}
       </Draggable>
-    //   <p>col container</p>
-    // </Card>
 )};
