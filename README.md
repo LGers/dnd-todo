@@ -1,9 +1,9 @@
-# Step 9
-## Move Items between Columns with react-beautiful-dnd using onDragEnd
+# Step 12
+## Reorder Columns with react-beautiful-dnd
 
-In this lesson we will place multiple task lists next to each other and enable movement of the tasks between the lists.
+In this lesson, we will be applying a collection of learned techniques to enable reordering of the columns in our application.
 
-Now that our application has multiple columns, the onDragEnd callback will need to be refactored to handle more than one column. We will add some new logic to move tasks from one column to another in our state.
+To achieve this, you will wrap the Columns in a single <Droppable /> component, ordered on the horizontal plane, and enhance the Columns to become draggable. You’ll see that wiring up Columns for re-ordering is very similar to what you experienced with tasks. We will be using nested <Draggable /> and <Droppable /> components and the Droppable type prop to achieve column reordering.
 ______
 
 # Getting Started with Create React App
