@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, CssBaseline } from "@mui/material";
 import { Column } from "./Components/Column/Column";
 import { initialState } from "./initial-data";
 
@@ -22,7 +22,7 @@ export const App = () => {
       return;
     }
 
-    if(type === 'column') {
+    if (type === 'column') {
       const newColumnOrder = Array.from(state.columnOrder);
       newColumnOrder.splice(source.index, 1);
       newColumnOrder.splice(destination.index, 0, draggableId);
@@ -30,7 +30,7 @@ export const App = () => {
       const newState = {
         ...state,
         columnOrder: newColumnOrder,
-      }
+      };
       setState(newState);
       return;
     }
@@ -45,8 +45,8 @@ export const App = () => {
   
       const newColumn = {
         ...startColumn,
-        taskIds: newTasksIds
-      }
+        taskIds: newTasksIds,
+      };
   
       const newState = {
         ...state,
@@ -54,7 +54,7 @@ export const App = () => {
           ...state.columns,
           [newColumn.id]: newColumn,
         },
-      }
+      };
       setState(newState);
       return;
     }
@@ -81,50 +81,90 @@ export const App = () => {
       columns: {
         ...state.columns,
         [newStartColumn.id]: newStartColumn,
-        [newFinishColumn.id]: newFinishColumn
+        [newFinishColumn.id]: newFinishColumn,
       },
     };
     setState(newState);
   };
 
   return (
-    <Container sx={{bgcolor: 'gray', height: '100vh'}}>
-      <h1>dnd-todo</h1>
-      <h2>Columns</h2>
-      <DragDropContext
-        // onDragStart={onDragStart}
-        // onDragUpdate={onDragUpdate}
-        onDragEnd={onDragEnd}
+    <Container sx={{
+        bgcolor: 'gray',
+        height: '100vh',
+        marginTop: 0,
+        pt: 0,
+        overflow: 'hidden',
+        // overflow: 'auto',
+        // marginBottom: '30px',
+        }}
+    >
+      <CssBaseline />
+      <Container sx={{
+        bgcolor: 'darkgray',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        // flexGrow: 1,
+        // overflow: 'hidden',
+        // overflow: 'auto',
+        // margin: '30px',
+        // marginBottom: '30px',
+        }}
       >
-        <Droppable droppableId='board' direction='horizontal' type='column'>
-          {(provided) => (
-            <Stack
-              direction={'row'}
-              spacing={2}
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
-              {state.columnOrder.map((columnId, index) => {
-                const column = state.columns[columnId];
-                const tasks = column.taskIds.map((taskId) => {
-                  return state.tasks[taskId]
-                });
-                return (
-                  <Column
-                    key={column.id}
-                    title={column.title}
-                    description={column.description}
-                    column={column}
-                    tasks={tasks}
-                    index={index}
-                  />
-                )
-              })}
-              {provided.placeholder}
-            </Stack>
-          )}
-        </Droppable>
-      </DragDropContext>
+        <h1>dnd-todo</h1>
+        <h2>Columns</h2>
+        <DragDropContext
+          // onDragStart={onDragStart}
+          // onDragUpdate={onDragUpdate}
+          onDragEnd={onDragEnd}
+        >
+          <Droppable droppableId='board' direction='horizontal' type='column' 
+
+          >
+            {(provided) => (
+              <Stack
+                direction={'row'}
+                spacing={2}
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                sx={{
+                  // height: '100%',
+                  // height: '300px',
+                  bgcolor: '#f1f111',
+                  overflow: 'auto',
+                }}
+              >
+                {state.columnOrder.map((columnId, index) => {
+                  const column = state.columns[columnId];
+                  const tasks = column.taskIds.map((taskId) => {
+                    return state.tasks[taskId];
+                  });
+                  return (
+                    <Column
+                      key={column.id}
+                      title={column.title}
+                      description={column.description}
+                      column={column}
+                      tasks={tasks}
+                      index={index}
+                      sx={{
+                        // height: '100%',
+                        // height: '300px',
+                        overflow: 'auto',
+                        // overflow: 'hidden',
+                      }}
+                    />
+                  )
+                })}
+                {provided.placeholder}
+              </Stack>
+            )}
+          </Droppable>
+        </DragDropContext>
+        <div>
+          <h1>Footer</h1>
+        </div>
+      </Container>
     </Container>
   );
 };

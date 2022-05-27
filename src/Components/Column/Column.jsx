@@ -7,50 +7,109 @@ export const Column = (props) => {
   const { title, description, tasks } = props;
 
   return (
-    <Draggable draggableId={props.column.id} index={props.index}>
-      {(provided) => (
-        <Card
-          sx={{ width: '250px', bgcolor: '#d5d5ff', height: '100%' }}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          ref={provided.innerRef}
-        >
-          <Container>
-            <Typography variant={'h4'} component={'div'}>Column</Typography>
-            <Typography variant={'h5'} component={'div'}>{title}</Typography>
-            <Typography variant={'h6'} component={'div'}>{description}</Typography>
-            <Droppable droppableId={props.column.id} type={'task'}>
-              {(provided, snapshot) => (
-                // TODO what is inner ref
-                // FIXME what is inner ref
-                // <div ref={provided.innerRef} {...provided.droppableProps}>
-                  <Stack
-                    spacing={2}
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    sx={{
-                      transition: 'transform 0.05s ease',
-                      transform: snapshot.isDragging ? 'rotate(5deg)' : undefined,
-                      bgcolor: snapshot.isDraggingOver ? '#bdbdd5' : '#d5d5ff',
-                      }}
-                  >
-                    {tasks.map((task, index) => {
-                        return <Task
-                          key={task.id}
-                          title={task.title}
-                          description={task.description}
-                          task={task}
-                          index={index}
-                        />
-                      }
-                    )}
-                    {provided.placeholder}
-                  </Stack>
-                // </div>
-              )}
-            </Droppable>
-          </Container>
-        </Card>
-      )}
-    </Draggable>
+    // <Card
+    //       sx={{
+    //         // width: '100%',
+    //         height: '100%',
+    //         bgcolor: '#801124',
+    //         // overflow: 'hidden',
+    //         // overflow: 'auto',
+    //         display: 'flex',
+    //         flexDirection: 'column',
+    //       }}
+    //       // {...provided.draggableProps}
+    //       // {...provided.dragHandleProps}
+    //       // ref={provided.innerRef}
+    // >
+    //   <p>col container</p>
+      <Draggable draggableId={props.column.id} index={props.index}>
+        {(provided) => (
+          // <Container
+          //   sx={{
+          //     // width: '100%',
+          //     // height: '100%',
+          //     bgcolor: '#15f5ff',
+          //     // overflow: 'hidden',
+          //     // overflow: 'auto',
+          //     display: 'flex',
+          //   flexDirection: 'column',
+          //   }}
+          //   {...provided.draggableProps}
+          //   {...provided.dragHandleProps}
+          //   ref={provided.innerRef}
+          // >
+            <Card
+              sx={{
+                width: '250px',
+                // height: '100%',
+                bgcolor: '#d5d5ff',
+                overflow: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+              // {...provided.draggableProps}
+              // {...provided.dragHandleProps}
+              // ref={provided.innerRef}
+            >
+              <Container
+                sx={{
+                  overflowY: 'auto',
+                  height: '100%'
+                }}
+              >
+                <Typography variant={'h4'} component={'div'}>Column</Typography>
+                <Typography variant={'h5'} component={'div'}>{title}</Typography>
+                <Typography variant={'h6'} component={'div'}>{description}</Typography>
+                <Droppable droppableId={props.column.id} type={'task'}>
+                  {(provided, snapshot) => (
+                    // TODO what is inner ref
+                    // FIXME what is inner ref
+                    // <div ref={provided.innerRef} {...provided.droppableProps}>
+                      <Card
+                        sx={{
+                          // overflowY: 'auto',
+                          // height: '100%',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          bgcolor: '#1d1d1d',
+                        }}
+                      >
+                        <Stack
+                          spacing={2}
+                          ref={provided.innerRef}
+                          {...provided.droppableProps}
+                          sx={{
+                            // overflow: 'hidden',
+                            // height: '100%',
+                            dispaly: 'flex',
+                            flexDirection: 'column',
+                            overflowY: 'auto',
+                            transition: 'transform 0.05s ease',
+                            transform: snapshot.isDragging ? 'rotate(5deg)' : undefined,
+                            bgcolor: snapshot.isDraggingOver ? '#bdbdd5' : '#d5d5ff',
+                            }}
+                        >
+                          {tasks.map((task, index) => {
+                              return <Task
+                                key={task.id}
+                                title={task.title}
+                                description={task.description}
+                                task={task}
+                                index={index}
+                              />
+                            }
+                          )}
+                          {provided.placeholder}
+                        </Stack>
+                      </Card>
+                    // </div>
+                  )}
+                </Droppable>
+              </Container>
+            </Card>
+          // </Container>
+        )}
+      </Draggable>
+    //   <p>col container</p>
+    // </Card>
 )};
