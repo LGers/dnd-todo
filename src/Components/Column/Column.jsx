@@ -50,9 +50,9 @@ export const Column = (props) => {
                           sx={{
                             // overflow: 'hidden',
                             // height: '100%',
-                            dispaly: 'flex',
-                            flexDirection: 'column',
-                            overflowY: 'auto',
+                            // dispaly: 'flex',
+                            // flexDirection: 'column',
+                            // overflowY: 'auto',
                             transition: 'transform 0.05s ease',
                             transform: snapshot.isDragging ? 'rotate(5deg)' : undefined,
                             bgcolor: snapshot.isDraggingOver ? '#bdbdd5' : '#d5d5ff',

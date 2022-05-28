@@ -93,9 +93,7 @@ export const App = () => {
         height: '100vh',
         marginTop: 0,
         pt: 0,
-        overflow: 'hidden',
-        // overflow: 'auto',
-        // marginBottom: '30px',
+        // overflow: 'hidden',
         }}
     >
       <CssBaseline />
@@ -104,11 +102,6 @@ export const App = () => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        // flexGrow: 1,
-        // overflow: 'hidden',
-        // overflow: 'auto',
-        // margin: '30px',
-        // marginBottom: '30px',
         }}
       >
         <h1>dnd-todo</h1>
@@ -150,7 +143,7 @@ export const App = () => {
                       sx={{
                         // height: '100%',
                         // height: '300px',
-                        overflow: 'auto',
+                        // overflow: 'auto',
                         // overflow: 'hidden',
                       }}
                     />
